@@ -38,7 +38,6 @@ public class MainFragment extends Fragment {
                 "    星期五 -   多云  -   27/33",
                 "    星期六 -   多云  -   27/33",
                 "    星期日 -   多云  -   27/33",
-                ?????????"123123"
     };
 
         List<String> forecastList = new ArrayList<String>(Arrays.asList(forecastArray));
