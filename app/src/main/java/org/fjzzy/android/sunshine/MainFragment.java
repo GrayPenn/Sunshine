@@ -2,8 +2,12 @@ package org.fjzzy.android.sunshine;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -24,6 +28,11 @@ public class MainFragment extends Fragment {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,13 +40,13 @@ public class MainFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
         String[] forecastArray = {
-                "    星期一 -   多云  -   27/33",
-                "    星期二 -   多云  -   27/33",
-                "    星期三 -   多云  -   27/33",
-                "    星期四 -   多云  -   27/33",
-                "    星期五 -   多云  -   27/33",
-                "    星期六 -   多云  -   27/33",
-                "    星期日 -   多云  -   27/33",
+                "星期一 -   暴雨  -   27/33",
+                "星期二 -   暴雨  -   27/33",
+                "星期三 -   暴雨  -   27/33",
+                "星期四 -   暴雨  -   27/33",
+                "星期五 -   暴雨  -   27/33",
+                "星期六 -   暴雨  -   27/33",
+                "星期日 -   暴雨  -   27/33",
     };
 
         List<String> forecastList = new ArrayList<String>(Arrays.asList(forecastArray));
@@ -57,5 +66,36 @@ public class MainFragment extends Fragment {
 
         return rootView;
     }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+
+        inflater.inflate(R.menu.menu_main,menu);
+
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.action_refresh){
+
+            //处理代码
+            ForecastAsyncTask forecastAsyncTask = new ForecastAsyncTask();
+            forecastAsyncTask.execute();
+
+            return true;
+        }
+
+
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
+
+
 
 }
