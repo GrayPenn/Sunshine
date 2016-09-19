@@ -32,7 +32,7 @@ public class ForecastAsyncTask extends AsyncTask<Void,Void,Void>{
             urlConnection.connect();
 
 
-            
+
 
             //输入流
             InputStream inputStream = urlConnection.getInputStream();
