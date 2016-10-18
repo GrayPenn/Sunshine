@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.fjzzy.android.sunshine">
 
-    <!--获得访问网络权限-->
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- 获得访问网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -17,6 +17,19 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <!-- 添加首页面点击进去的返回键 android:parentActivityName=".MainActivity" -->
+        <activity
+            android:name=".DetailActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.fjzzy.android.sunshine.MainActivity" />
         </activity>
     </application>
 
